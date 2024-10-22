@@ -2,6 +2,7 @@ import { FC } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import Image from "next/image";
 import Link from "next/link";
+import HeroIMG from "../../../public/Hero.webp"
 
 const Hero: FC = () => {
   return (
@@ -32,11 +33,9 @@ const Hero: FC = () => {
         {/* Right Image */}
         <div className="relative w-full max-w-sm lg:max-w-md h-72 lg:h-96">
           <Image
-            src="/_next/static/media/Hero.58c5f27d.webp"
+            src={HeroIMG}
             alt="Vodafone Team"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-md shadow-lg"
+            className="rounded-md shadow-lg lg:mt-14"
           />
         </div>
       </div>

@@ -1,0 +1,1 @@
+ALTER TABLE "leads" ADD COLUMN "status" varchar(20) DEFAULT 'New' NOT NULL;

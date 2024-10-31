@@ -53,20 +53,21 @@ const FunnelForm: FC = () => {
 
     setLoading(true); // Start the loader
 
-    const response = await fetch("/api/email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+    const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
     });
 
     setLoading(false); // Stop the loader
 
     if (response.ok) {
-      setSubmitted(true);
+        setSubmitted(true);
     } else {
-      alert("There was an error. Please try again.");
+        alert("There was an error. Please try again.");
     }
-  };
+};
+
 
   if (submitted) {
     return (

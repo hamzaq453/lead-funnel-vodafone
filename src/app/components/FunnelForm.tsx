@@ -37,11 +37,11 @@ const FunnelForm: FC = () => {
   const validateForm = () => {
     const newErrors: { [key: string]: string } = {};
 
-    if (!formData.fullName) newErrors.fullName = "Full Name is required.";
+    if (!formData.fullName) newErrors.fullName = "Vollständiger Name ist erforderlich.";
     if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email))
-      newErrors.email = "Valid email is required.";
-    if (!formData.phone) newErrors.phone = "Phone number is required.";
-    if (!formData.address) newErrors.address = "Address is required.";
+      newErrors.email = "Gültige E-Mail-Adresse ist erforderlich.";
+    if (!formData.phone) newErrors.phone = "Telefonnummer ist erforderlich.";
+    if (!formData.address) newErrors.address = "Adresse ist erforderlich.";
 
     setErrors(newErrors);
 
@@ -54,20 +54,19 @@ const FunnelForm: FC = () => {
     setLoading(true); // Start the loader
 
     const response = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
     });
 
     setLoading(false); // Stop the loader
 
     if (response.ok) {
-        setSubmitted(true);
+      setSubmitted(true);
     } else {
-        alert("There was an error. Please try again.");
+      alert("Es gab einen Fehler. Bitte versuchen Sie es erneut.");
     }
-};
-
+  };
 
   if (submitted) {
     return (
@@ -75,10 +74,10 @@ const FunnelForm: FC = () => {
         <div className="bg-white p-8 max-w-lg w-full shadow-lg rounded-lg text-center">
           <AiOutlineCheckCircle className="text-green-500 mx-auto" size={80} />
           <h2 className="text-xl text-gray-800 font-bold mt-4">
-            Application Submitted!
+            Bewerbung eingereicht!
           </h2>
           <p className="text-gray-600 mt-2">
-            Your application has been submitted successfully. We will contact you soon.
+            Ihre Bewerbung wurde erfolgreich übermittelt. Wir werden Sie bald kontaktieren.
           </p>
         </div>
       </section>
@@ -86,71 +85,69 @@ const FunnelForm: FC = () => {
   }
 
   return (
-    <section  id="application" className="min-h-screen bg-red-500 flex flex-col items-center justify-center px-4 py-20">
-    {/* Title above the card */}
-    <h1 className="text-3xl font-bold mb-8 text-white">Start Application!</h1>
+    <section id="application" className="min-h-screen bg-red-500 flex flex-col items-center justify-center px-4 py-20">
+      {/* Title above the card */}
+      <h1 className="text-3xl font-bold mb-8 text-white">Bewerbung starten!</h1>
 
-    <div className="bg-white text-gray-800 p-8 max-w-lg w-full shadow-lg rounded-lg">
-      {/* Progress Bar */}
-      <div className="relative w-full h-2 mb-6 bg-gray-300 rounded">
-  <div
-    className={`absolute h-2 bg-red-500 rounded transition-all`}
-    style={{ width: `${((step - 1) / 3) * 100}%` }} // Adjusted logic
-  ></div>
-</div>
+      <div className="bg-white text-gray-800 p-8 max-w-lg w-full shadow-lg rounded-lg">
+        {/* Progress Bar */}
+        <div className="relative w-full h-2 mb-6 bg-gray-300 rounded">
+          <div
+            className={`absolute h-2 bg-red-500 rounded transition-all`}
+            style={{ width: `${((step - 1) / 3) * 100}%` }} // Adjusted logic
+          ></div>
+        </div>
 
-
-      {/* Step Components */}
-      {step === 1 && (
-        <Step1
-          jobImportance={formData.jobImportance}
-          onChange={(value) => handleChange("jobImportance", value)}
-        />
-      )}
-      {step === 2 && (
-        <Step2
-          customerExperience={formData.customerExperience}
-          onChange={(value) => handleChange("customerExperience", value)}
-        />
-      )}
-      {step === 3 && (
-        <Step3
-          contactTime={formData.contactTime}
-          onChange={(value) => handleChange("contactTime", value)}
-        />
-      )}
-      {step === 4 && (
-        <Step4
-          formData={formData}
-          errors={errors}
-          onChange={(field, value) => handleChange(field, value)}
-          onSubmit={handleSubmit}
-          loading={loading}
-        />
-      )}
-
-      {/* Navigation Buttons */}
-      <div className="flex justify-between mt-6">
-        {step > 1 && (
-          <button
-            onClick={handleBack}
-            className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md"
-          >
-            Back
-          </button>
+        {/* Step Components */}
+        {step === 1 && (
+          <Step1
+            jobImportance={formData.jobImportance}
+            onChange={(value) => handleChange("jobImportance", value)}
+          />
         )}
-        {step < 4 && (
-          <button
-            onClick={handleNext}
-            className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-500"
-          >
-            Next
-          </button>
+        {step === 2 && (
+          <Step2
+            customerExperience={formData.customerExperience}
+            onChange={(value) => handleChange("customerExperience", value)}
+          />
         )}
+        {step === 3 && (
+          <Step3
+            contactTime={formData.contactTime}
+            onChange={(value) => handleChange("contactTime", value)}
+          />
+        )}
+        {step === 4 && (
+          <Step4
+            formData={formData}
+            errors={errors}
+            onChange={(field, value) => handleChange(field, value)}
+            onSubmit={handleSubmit}
+            loading={loading}
+          />
+        )}
+
+        {/* Navigation Buttons */}
+        <div className="flex justify-between mt-6">
+          {step > 1 && (
+            <button
+              onClick={handleBack}
+              className="bg-gray-300 text-gray-800 px-4 py-2 rounded-md"
+            >
+              Zurück
+            </button>
+          )}
+          {step < 4 && (
+            <button
+              onClick={handleNext}
+              className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-500"
+            >
+              Weiter
+            </button>
+          )}
+        </div>
       </div>
-    </div>
-  </section>
-      
+    </section>
   );
 };
 
@@ -162,8 +159,8 @@ const Step1: FC<{ jobImportance: string; onChange: (value: string) => void }> = 
   onChange,
 }) => (
   <>
-    <h2 className="text-xl font-bold mb-4">What is most important to you in a job?</h2>
-    {["High Salary", "Flexibility", "Good Training", "Fun at Work", "Friendly Colleagues"].map(
+    <h2 className="text-xl font-bold mb-4">Was ist Ihnen bei einem Job am wichtigsten?</h2>
+    {["Hohes Gehalt", "Flexibilität", "Gute Ausbildung", "Spaß bei der Arbeit", "Freundliche Kollegen"].map(
       (option) => (
         <label key={option} className="block mb-2">
           <input
@@ -187,8 +184,8 @@ const Step2: FC<{ customerExperience: string; onChange: (value: string) => void 
   onChange,
 }) => (
   <>
-    <h2 className="text-xl font-bold mb-4">Do you have customer experience?</h2>
-    {["Yes", "No"].map((option) => (
+    <h2 className="text-xl font-bold mb-4">Haben Sie Kundenerfahrung?</h2>
+    {["Ja", "Nein"].map((option) => (
       <label key={option} className="block mb-2">
         <input
           type="radio"
@@ -210,8 +207,8 @@ const Step3: FC<{ contactTime: string; onChange: (value: string) => void }> = ({
   onChange,
 }) => (
   <>
-    <h2 className="text-xl font-bold mb-4">When can we contact you?</h2>
-    {["Anytime", "Morning", "Afternoon", "Evening"].map((time) => (
+    <h2 className="text-xl font-bold mb-4">Wann können wir Sie kontaktieren?</h2>
+    {["Jederzeit", "Morgens", "Nachmittags", "Abends"].map((time) => (
       <label key={time} className="block mb-2">
         <input
           type="radio"
@@ -236,12 +233,12 @@ const Step4: FC<{
   loading: boolean;
 }> = ({ formData, errors, onChange, onSubmit, loading }) => (
   <>
-    <h2 className="text-xl font-bold mb-4">Almost there! Please fill in your details.</h2>
+    <h2 className="text-xl font-bold mb-4">Fast geschafft! Bitte füllen Sie Ihre Daten aus.</h2>
 
     <div className="mb-4">
       <input
         type="text"
-        placeholder="Full Name"
+        placeholder="Vollständiger Name"
         value={formData.fullName}
         onChange={(e) => onChange("fullName", e.target.value)}
         className="w-full px-4 py-2 border rounded-md"
@@ -252,7 +249,7 @@ const Step4: FC<{
     <div className="mb-4">
       <input
         type="email"
-        placeholder="Email"
+        placeholder="E-Mail"
         value={formData.email}
         onChange={(e) => onChange("email", e.target.value)}
         className="w-full px-4 py-2 border rounded-md"
@@ -263,7 +260,7 @@ const Step4: FC<{
     <div className="mb-4">
       <input
         type="text"
-        placeholder="Phone Number"
+        placeholder="Telefonnummer"
         value={formData.phone}
         onChange={(e) => onChange("phone", e.target.value)}
         className="w-full px-4 py-2 border rounded-md"
@@ -274,7 +271,7 @@ const Step4: FC<{
     <div className="mb-4">
       <input
         type="text"
-        placeholder="Address"
+        placeholder="Adresse"
         value={formData.address}
         onChange={(e) => onChange("address", e.target.value)}
         className="w-full px-4 py-2 border rounded-md"
@@ -309,7 +306,7 @@ const Step4: FC<{
           ></path>
         </svg>
       ) : (
-        "Submit Application"
+        "Bewerbung abschicken"
       )}
     </button>
   </>

@@ -10,50 +10,50 @@ const Benefits: FC = () => {
     <section className="bg-white py-16">
       <div className="max-w-5xl mx-auto px-6">
         <h2 className="text-red-600 text-3xl md:text-4xl font-bold mb-8 text-center">
-          Your Benefits at a Glance!
+          Ihre Vorteile auf einen Blick!
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {/* Benefit Item */}
+          {/* Vorteil Element */}
           <BenefitItem
             icon={<FaMoneyBillWave className="text-green-500" size={30} />}
-            title="Financial Support & Bonus"
-            description="Up to €4,000 bonus during your onboarding for a secure start."
+            title="Finanzielle Unterstützung & Bonus"
+            description="Bis zu 4.000 € Bonus während der Einarbeitung für einen sicheren Start."
           />
           <BenefitItem
             icon={<FaChartLine className="text-red-500" size={30} />}
-            title="Unlimited Earning Potential"
-            description="Earn an average of €5,000 - €8,000 per month (gross)."
+            title="Unbegrenztes Verdienstpotenzial"
+            description="Verdienen Sie im Durchschnitt 5.000 € - 8.000 € pro Monat (brutto)."
           />
           <BenefitItem
             icon={<FaSuitcaseRolling className="text-yellow-500" size={30} />}
-            title="Incentive Trips & Rewards"
-            description="Enjoy frequent rewards and team-building trips."
+            title="Incentive-Reisen & Prämien"
+            description="Genießen Sie regelmäßige Prämien und Teamreisen."
           />
           <BenefitItem
             icon={<AiOutlineCar className="text-gray-600" size={30} />}
-            title="Discounted Leasing"
-            description="Get special leasing conditions with Mercedes & more."
+            title="Vergünstigtes Leasing"
+            description="Erhalten Sie spezielle Leasingkonditionen bei Mercedes & mehr."
           />
           <BenefitItem
             icon={<MdAccessTime className="text-blue-500" size={30} />}
-            title="Flexible Working Hours"
-            description="Manage your schedule with full time control."
+            title="Flexible Arbeitszeiten"
+            description="Gestalten Sie Ihren Zeitplan mit voller Kontrolle."
           />
           <BenefitItem
             icon={<MdOutlineLocationOn className="text-orange-500" size={30} />}
-            title="Local Flexibility"
-            description="Work at your convenience wherever you are."
+            title="Lokale Flexibilität"
+            description="Arbeiten Sie ganz nach Belieben, wo immer Sie möchten."
           />
           <BenefitItem
             icon={<MdOutlineSchool className="text-purple-500" size={30} />}
-            title="Training Opportunities"
-            description="Advance to a team leader role through ongoing training."
+            title="Schulungsmöglichkeiten"
+            description="Werden Sie durch kontinuierliche Schulungen zum Teamleiter."
           />
           <BenefitItem
             icon={<RiRocketLine className="text-red-500" size={30} />}
-            title="Free Intensive Coaching"
-            description="Get coaching for faster success and career growth."
+            title="Kostenloses Intensiv-Coaching"
+            description="Erhalten Sie Coaching für schnelleren Erfolg und Karrierewachstum."
           />
         </div>
 
@@ -62,7 +62,7 @@ const Benefits: FC = () => {
             href="#application"
             className="bg-red-600 text-white px-8 py-4 rounded-md text-lg font-semibold hover:bg-red-500 transition"
           >
-            Apply in 1 Minute!
+            In 1 Minute bewerben!
           </Link>
         </div>
       </div>
@@ -70,7 +70,7 @@ const Benefits: FC = () => {
   );
 };
 
-// BenefitItem Component
+// BenefitItem Komponente
 interface BenefitItemProps {
   icon: React.ReactNode;
   title: string;

@@ -9,7 +9,7 @@ export const leads = pgTable('leads', {
   fullName: varchar('full_name', { length: 100 }).notNull(),
   email: varchar('email', { length: 100 }).notNull(),
   phone: varchar('phone', { length: 20 }).notNull(),
-  status: varchar('status', { length: 20 }).default('New').notNull(),
+  status: varchar('status', { length: 20 }).default('Neu').notNull(),
   address: varchar('address', { length: 255 }).notNull(),
   createdAt: timestamp('created_at').defaultNow().notNull(),
 });

@@ -23,7 +23,7 @@ export async function POST(request: Request) {
             email,
             phone,
             address,
-            status: data.status || 'New', // Default to 'New' if not provided
+            status: data.status || 'Neu', 
         };
 
         // Insert the new lead into the database
